@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 let transport = nodemailer.createTransport({
     host: 'smtp.gmail.com',   // Cambiado de service: 'gmail' a host manual
-    port: 587,                // Puerto compatible con Railway
-    secure: false,
+    port: 465,                // Puerto compatible con Railway
+    secure: true,
     family: 4,
     auth: {
         user: process.env.EMAIL_USER,
