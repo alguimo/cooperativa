@@ -15,9 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 let transport = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    service: 'gmail',
     family: 4,
     auth: {
         user: process.env.EMAIL_USER,
@@ -48,7 +46,7 @@ app.post('/formulario', (req, res) => {
         try {
             transport.sendMail({
                 from: 'Cooperativa <contactcoopmontan@gmail.com>',
-                to: 'contactcoopmontan@gmail.com',
+                to: 'varoppo@gmail.com',
                 subject: 'Contacto Sitio Web',
                 html: `<h3>Tienes un nuevo mensaje:</h3>
 				<p><b>Nombre:</b> ${nombre} ${apellidos}</p>
