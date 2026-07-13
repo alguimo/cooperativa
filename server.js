@@ -34,8 +34,8 @@ app.post('/formulario', async (req, res) => {
         try {
             const { data, error } = await resend.emails.send({
                 
-                from: 'Cooperativa <onboarding@resend.dev>',
-                to: 'varoppo@gmail.com', 
+                from: 'Contacto Cooperativa <web@cooperativamontan.com>',
+                to: 'coop.agricolamontan@hotmail.com', 
                 subject: 'Contacto Sitio Web',
                 html: `<h3>Tienes un nuevo mensaje:</h3>
                 <p><b>Nombre:</b> ${nombre} ${apellidos}</p>
