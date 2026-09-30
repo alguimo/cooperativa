@@ -45,12 +45,16 @@ app.post('/formulario', async (req, res) => {
 
         // Verificación de idioma
         const langCode = franc(mensaje);
-        // Si no es español, comprobamos si contiene palabras clave del español/catalán
-        const esValido = ['spa', 'cat'].includes(langCode) || 
-                         /[áéíóúñàèìòùç]/i.test(mensaje) || 
-                         / (el|la|los|las|de|que|en|un|una|es|y) /i.test(mensaje);
         
-        if (!esValido) {
+        // Criterios de bypass para evitar falsos positivos:
+        // 1. Mensajes muy cortos (menos de 30 chars) se permiten (suelen ser consultas legítimas breves)
+        // 2. Mensajes que contienen palabras clave del negocio
+        const hasBusinessKeywords = /aceite|comprar|pedido|litros|oliva/i.test(mensaje);
+        const isSpanishOrCatalan = ['spa', 'cat'].includes(langCode) || 
+                                 /[áéíóúñàèìòùç]/i.test(mensaje) || 
+                                 / (el|la|los|las|de|que|en|un|una|es|y) /i.test(mensaje);
+
+        if (!hasBusinessKeywords && !isSpanishOrCatalan) {
             logBlockedAttempt(`Idioma no soportado (${langCode})`, mensaje, email, req.ip);
             return res.status(400).send('Solo se permiten mensajes en español o catalán.');
         }
