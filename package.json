@@ -11,12 +11,14 @@
     "license": "ISC",
     "dependencies": {
         "body-parser": "^1.19.0",
+        "bootstrap": "^4.5.0",
         "dotenv": "^17.4.2",
         "express": "^4.17.1",
         "franc": "^6.2.0",
+        "ionicons": "^8.1.0",
         "langs": "^2.0.0",
-        "nodemailer": "^8.0.5",
         "path": "^0.12.7",
+        "popper.js": "^1.16.0",
         "resend": "^6.16.0"
     }
 }

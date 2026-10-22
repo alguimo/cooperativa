@@ -1,7 +1,7 @@
 $("#sendmail").submit(function(e) {
     e.preventDefault();
     $('#send').hide();
-    $('#loading').show()
+    $('#loading').show();
 
     var form = $(this);
     var url = form.attr('action');
@@ -12,16 +12,21 @@ $("#sendmail").submit(function(e) {
         data: form.serialize(),
         success: function(data) {
             setTimeout(() => {
-                $('#loading').hide()
+                $('#loading').hide();
                 $('#send').show();
                 $('#sendmail').trigger("reset");
-                $('#alerta').slideDown()
-            }, 1500)
+                $('#alerta').slideDown();
+            }, 1200);
             setTimeout(() => {
-                $('#alerta').slideUp()
-            }, 4000)
+                $('#alerta').slideUp();
+            }, 5000);
+        },
+        error: function(xhr) {
+            setTimeout(() => {
+                $('#loading').hide();
+                $('#send').show();
+                alert(xhr.responseText || 'No se ha podido enviar el mensaje. Por favor revise los campos.');
+            }, 500);
         }
     });
-
-
 });
