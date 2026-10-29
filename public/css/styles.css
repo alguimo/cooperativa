@@ -717,3 +717,172 @@ input[type="number"] {
 }
 
 @media (min-width: 1200px) {}
+
+/* MODAL PRODUCTOS (ETIQUETAS EN GRANDE) */
+
+.modal-hidden {
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: none;
+}
+
+.modal-content.modal-producto {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 94%;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    text-align: center;
+}
+
+.modal-content.modal-producto p {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.zoom-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-top: 15px;
+    background-color: #fff;
+}
+
+#catalogo .modal-producto .zoom-container img {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    margin: 0;
+    border-radius: 16px;
+    display: block;
+    transition: transform 0.2s ease-out;
+}
+
+.zoom-hint {
+    display: none;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: #343a40;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: #32b648;
+}
+
+.modal-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.modal-tab-btn {
+    padding: 8px 22px;
+    border-radius: 20px;
+    border: 2px solid #343a40;
+    background-color: #fff;
+    color: #343a40;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-tab-btn.active {
+    background-color: #343a40;
+    color: #32b648;
+}
+
+@media (max-width: 767.98px) {
+    .modal-hidden {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .modal-content.modal-producto {
+        width: 94%;
+        margin: 1rem auto;
+        padding: 1.25rem 1rem 1.5rem 1rem;
+    }
+
+    .modal-content.modal-producto h6 {
+        font-size: 26px;
+        margin-top: 10px;
+        margin-bottom: 6px;
+    }
+
+    .modal-content.modal-producto p {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    /* Recortar el aire blanco en movil */
+    #catalogo .modal-producto .modal-col-frontal .zoom-container img {
+        transform: scale(1.55);
+        transform-origin: 50% 55%;
+    }
+
+    #catalogo .modal-producto .modal-col-etiqueta .zoom-container img {
+        transform: scale(2.25);
+        transform-origin: 50% 63%;
+    }
+}
+
+@media (min-width: 768px) {
+    .zoom-container {
+        cursor: zoom-in;
+    }
+
+    .zoom-container:hover img {
+        transform: scale(2.5);
+    }
+
+    .zoom-container.zoom-extra {
+        cursor: zoom-out;
+    }
+
+    .zoom-container.zoom-extra img {
+        transform: scale(3.5);
+    }
+
+    .zoom-hint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.65);
+        color: #fff;
+        font-size: 22px;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .zoom-container:hover .zoom-hint {
+        opacity: 0;
+    }
+}
